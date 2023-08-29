@@ -17,12 +17,15 @@ export const load = () => {
 		month:new Date().getMonth() + 1,
 		day:new Date().getDate()
 	}
+
+  let result;
   const unitWords = ['', '만', '억', '조', '경'];
   const numbers = []
   return {
     price,
     mapleCubeUrl,
     startDate,
-    endDate
+    endDate,
+    result
   }
 }
