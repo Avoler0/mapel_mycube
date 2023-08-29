@@ -1,5 +1,7 @@
 <script  lang="ts">
-  import { apiKey } from '$lib/stores/apiKeyStore.ts';
+  import AllCubeList from '$lib/component/AllCubeList.svelte';
+  import CharacterList from '$lib/component/CharacterList.svelte';
+import { apiKey } from '$lib/stores/apiKeyStore.ts';
   import { all_cube_result,cube_result } from '$lib/stores/cubeStore.ts';
 	import axios from 'axios'
 
@@ -232,33 +234,8 @@
 	</div>
 	{#if cubeShow}
 		<div class="w-2/6 h-2/6 m-auto text-center mt-6">
-			<div class="text-3xl font-bold">캐릭터 목록</div>
-			{#each Object.entries($cube_result) as [key,value]}
-				<div>
-					<button on:click={() => chShow(key)}>
-						{key}
-					</button>
-					{#if show[key]}
-						<div>
-							{#each Object.entries(value) as [key2,value2]}
-								<div class="border p-2 mb-2">
-									<div class="text-2xl">
-										{key2}
-									</div>
-									<div>
-										{#each Object.entries(value2) as [key3,value3]}
-											<div class="flex">
-												<div class="mr-2">{key3}:</div>
-												<div>{value3}</div>
-											</div>
-										{/each}
-									</div>
-								</div>
-							{/each}
-						</div>
-					{/if}
-				</div>
-			{/each}
+			<AllCubeList />
+			<CharacterList />
 		</div>
 	{/if}
 	{/if}
