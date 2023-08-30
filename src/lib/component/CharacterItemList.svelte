@@ -7,27 +7,31 @@
   const handleAllCubeShow = () => {
     allCubeShow = !allCubeShow;
   }
+
+  console.log(items)
 </script>
 
-<div>
-  {#each Object.entries(items) as [key2,value2]}
-    <div class="border p-2 mb-2">
-      {#if key2 === '모든 큐브'}
-        <div class="flex items-end justify-between">
+{#if items}
+  <div>
+    {#each Object.entries(items) as [key2,value2]}
+      <div class="border p-2 mb-2">
+        {#if key2 === '모든 큐브'}
+          <div class="flex items-end justify-between">
+            <div class="text-2xl">
+              {key2}
+            </div>
+            <button on:click={handleAllCubeShow}>보여주기</button>
+          </div>
+          {#if allCubeShow}
+            <ItemCubeInfo itemInfo={value2} />
+          {/if}
+        {:else}
           <div class="text-2xl">
             {key2}
           </div>
-          <button on:click={handleAllCubeShow}>보여주기</button>
-        </div>
-        {#if allCubeShow}
           <ItemCubeInfo itemInfo={value2} />
         {/if}
-      {:else}
-        <div class="text-2xl">
-          {key2}
-        </div>
-        <ItemCubeInfo itemInfo={value2} />
-      {/if}
-    </div>
-  {/each}
-</div>
+      </div>
+    {/each}
+  </div>
+{/if}

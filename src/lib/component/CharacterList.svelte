@@ -12,7 +12,7 @@
 <div class="border p-2 text-left">
   <div class="flex justify-between mb-2">
     <div class="text-3xl font-bold">캐릭터 목록</div>
-    <select class="border p-1" on:change={characterSelect}>
+    <select class="border p-1 bg-cyan-100" on:change={characterSelect}>
       {#each Object.entries($cube_result) as [key,_,index]}
         <option value={key} selected={index === 0}>
           {key}
