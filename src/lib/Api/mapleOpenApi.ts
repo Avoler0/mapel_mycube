@@ -14,7 +14,8 @@ export const mapleApi = async (startDate,endDate,apiKey) => {
 			 [...Array(parseInt(diff))].map((_,i)=>{
 			return axios.get('https://public.api.nexon.com/openapi/maplestory/v1/cube-use-results',{
 				headers:{
-					Authorization:apiKey
+					Authorization:apiKey,
+					'Access-Control-Allow-Origin':'*'
 				},
 				params:{
 					count:1000,
