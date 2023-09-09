@@ -7,6 +7,11 @@
 	box-sizing: border-box;
 }
 
+.root{
+	width: 100vw;
+	height: 100vh;
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;
@@ -20,6 +25,7 @@ body {
 		),
 		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
 }
+
 
 h1,
 h2,

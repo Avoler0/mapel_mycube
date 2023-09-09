@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { mapleApi } from '$lib/Api/maple';
+  import { mapleApi } from '$lib/Api/mapleOpenApi';
   import { apiKey } from '$lib/stores/apiKeyStore';
   import { dateSelect } from '$lib/stores/calendarStore';
-  import { all_cube_result, cube_result } from '$lib/stores/cubeStore';
+  import { all_cube_result, cubeClear, cube_ready, cube_result } from '$lib/stores/cubeStore';
 	import localeKr from 'air-datepicker/locale/ko';
   import { createPopper } from '@popperjs/core';
   import AirDatepicker from 'air-datepicker'
@@ -31,6 +31,7 @@
       multipleDatesSeparator: ' - ',
       locale: localeKr,
       minDate:new Date(2010,5,13),
+      // minDate:new Date(2023,4,5),
       maxDate:new Date(),
       dateFormat(date) {
         return date.toLocaleString('kr', {
@@ -81,20 +82,18 @@
     apiKey.set('');
   }
   const consoleGoGo = () => {
-    const selectMonth:HTMLDivElement | null = document.querySelectorAll('.air-datepicker-cell.-month-');
-    console.log('셀렉 몬스',selectMonth)
+    console.log($cube_ready)
 	}
-
 </script>
 
 
 
 
-<div class="w-fit h-2/6 m-auto text-center mt-12">
+<div id="date-set" class={`${$cube_ready && 'active'} h-fit mx-auto text-center transition-all`}>
   <div class="mb-4">
     <h3 class="text-4xl font-bold">날짜 설정</h3>
   </div>
-  <div class="w-96 h-2/6 mb-4">
+  <div class="w-full h-2/6 mb-4">
     <section class="w-fit m-auto">
       <div id="calendar" class="w-96 border-b-0" />
       <div class="flex justify-around h-8 p-1 mt-2 content-box border border-gray-400 rounded ">
@@ -113,8 +112,28 @@
 		<button class="inline-block w-full border mb-2 p-4 bg-cyan-50 w-48" on:click={handleApiRemove}>
 			API 키 삭제
 		</button>
+    <button class="ddd inline-block w-full border mb-2 p-4 bg-cyan-50 w-48" on:click={cubeClear}>
+			다시 하기
+		</button>
 		<button class="ddd inline-block w-full border p-4 bg-cyan-50 w-48" on:click={consoleGoGo}>
 			리설
 		</button>
   </div>
 </div>
+
+<style>
+  @keyframes fadeInDown {
+      0% {
+          opacity: 0;
+          transform: translate3d(0, 50%, 0);
+      }
+      to {
+          opacity: 1;
+          transform: translateZ(0);
+      }
+  }
+  #date-set.active{
+    animation: fadeInDown 1s;
+    
+  }
+</style>

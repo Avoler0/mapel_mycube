@@ -1,4 +1,6 @@
 <script lang="ts" >
+  import * as cheerio from 'cheerio';
+  import { mapleNamuWikiMarkUp } from "$lib/Api/mapleMarkUpApi";
   import ItemCubeInfo from "./ItemCubeInfo.svelte";
 
   export let items:any;
@@ -8,28 +10,27 @@
     allCubeShow = !allCubeShow;
   }
 
-  console.log(items)
 </script>
 
 {#if items}
-  <div>
-    {#each Object.entries(items) as [key2,value2]}
+  <div class="h-96 overflow-y-scroll">
+    {#each Object.entries(items) as [itemKey,value]}
       <div class="border p-2 mb-2">
-        {#if key2 === '모든 큐브'}
+        {#if itemKey === '모든 큐브'}
           <div class="flex items-end justify-between">
             <div class="text-2xl">
-              {key2}
+              {itemKey}
             </div>
             <button on:click={handleAllCubeShow}>보여주기</button>
           </div>
           {#if allCubeShow}
-            <ItemCubeInfo itemInfo={value2} />
+            <ItemCubeInfo itemInfo={value} />
           {/if}
         {:else}
           <div class="text-2xl">
-            {key2}
+            {itemKey}
           </div>
-          <ItemCubeInfo itemInfo={value2} />
+          <ItemCubeInfo itemInfo={value} />
         {/if}
       </div>
     {/each}

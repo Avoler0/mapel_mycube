@@ -6,8 +6,10 @@
 <div class="root">
 	<Header />
 
-	<main class="w-full max-w-screen-xl flex flex-col box-border m-auto">
+	<main class="w-full max-w-screen-xl h-full flex flex-col box-border m-auto">
+		<div class="p-2 h-full">
 			<slot />
+		</div>
 	</main>
 
 </div>

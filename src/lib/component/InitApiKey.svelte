@@ -31,29 +31,29 @@
 	}
 </script>
 
-
 <div class="w-2/6 h-2/6 m-auto text-center mt-6">
-  <label for="api_key">
-    <span>API 키 입력</span>
-    <input id="api_key"
-      class="border"
-      bind:value={key}
-    />
-  </label>
-  <button on:click={handleApiSetOnClick}>
-    클릭
-  </button>
-  <div>
-    <button on:click={promptApiKeyName}>
-      이름 입력
-    </button>
-  </div>
-  <div>
-    <div>
-      API 키 만들러 가기
+  <div class="w-96 h-2/6 mb-4">
+    <div class="mb-4">
+      <h3 class="text-4xl font-bold">API 키 입력</h3>
     </div>
-    <div>
-      <a href="https://developers.nexon.com/Maplestory" target="_blank">사이트!</a>
+    <label for="api_key" class="border p-2">
+      <input id="api_key"
+        class="px-1 w-4/6 focus:outline-0"
+        bind:value={key}
+      />
+      <button on:click={handleApiSetOnClick}>
+        등록
+      </button>
+    </label>
+    
+    <div class="mt-4 flex flex-col items-center">
+      <button class="inline-block w-4/6 border mb-2 p-4 bg-cyan-50 w-48" on:click={promptApiKeyName} >
+        이름 입력
+      </button>
+      <button class="inline-block w-4/6 border mb-2 p-4 bg-cyan-50 w-48">
+        <a href="https://developers.nexon.com/Maplestory" target="_blank">API KEY 생성 사이트!</a>
+      </button>
     </div>
   </div>
+  
 </div>

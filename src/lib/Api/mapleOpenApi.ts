@@ -20,9 +20,12 @@ export const mapleApi = async (startDate,endDate,apiKey) => {
 					count:1000,
 					date:datePlus(startDate,i),
 					cursor:''
-			}})
+			},
+			withCredentials:true
+		})
 		}))
 		.then((response)=>{
+			console.log(response)
 			const result = response.reduce((prev:any,next:any)=>{
 					if(next.status === 'rejected') return prev;
 					if(next.value.data.cube_histories.length === 0 ) return prev;
@@ -60,6 +63,7 @@ export const mapleApi = async (startDate,endDate,apiKey) => {
       location.reload()
 		})
 		.finally(()=>{
+      console.log('파이널리')
       cube_ready.set(true);
 		})
 		

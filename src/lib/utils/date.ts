@@ -7,7 +7,7 @@ export const dateDiff = (start:Date,end:Date) => {
 }
 
 export const datePlus = (start:Date,day:number) => {
-  const plusDate = new Date(start.getFullYear(),start.getMonth(),start.getDate()+day)
+  const plusDate = new Date(start.getFullYear(),start.getMonth()+1,start.getDate()+day)
   const plusMonth = plusDate.getMonth() === 0 ? 12 : plusDate.getMonth()
 
   return plusDate.getFullYear()+"-"+String(plusMonth).padStart(2,'0')+"-"+String(plusDate.getDate()).padStart(2,'0');
